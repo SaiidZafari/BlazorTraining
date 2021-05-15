@@ -15,19 +15,31 @@ namespace EmployeeManagement.Api.Controllers
     public class EmployeesController : ControllerBase
     {
 
-
-        //private readonly AppDbContext _context;
-
-        //public EmployeesController(AppDbContext context)
-        //{
-        //    _context = context;
-        //}
-
         private readonly IEmployeeRepository employeeRepository;
 
         public EmployeesController(IEmployeeRepository employeeRepository)
         {
             this.employeeRepository = employeeRepository;
+        }
+
+        //[HttpGet("{search}/{name}/{gender}")]
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Employee>>> Search(string name, Gender? gender)
+        {
+            try
+            {
+                var result = await employeeRepository.Search(name, gender);
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            }
         }
 
         // GET: api/Employees
@@ -143,10 +155,6 @@ namespace EmployeeManagement.Api.Controllers
             }
 
         }
-
-        //private bool EmployeeExists(int id)
-        //{
-        //    return _context.Employees.Any(e => e.EmployeeId == id);
-        //}
+       
     }
 }
