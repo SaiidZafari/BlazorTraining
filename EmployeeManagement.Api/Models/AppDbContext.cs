@@ -47,7 +47,7 @@ namespace EmployeeManagement.Api.Models
                 EmployeeId = 2,
                 FirstName = "Kim",
                 LastName = "Galloway",
-                Email = "Sam@pragimtech.com",
+                Email = "Kim@pragimtech.com",
                 DateOfBrith = new DateTime(1981, 12, 22),
                 Gender = Gender.Male,
                 DepartmentId = 2,
