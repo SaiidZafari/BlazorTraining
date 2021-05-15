@@ -2,7 +2,11 @@
 @inherits EmployeeListBase
 
 <h3>Employee List</h3>
-
+@if (Employees == null)
+{
+    <div class="spinner"></div>
+}
+else { 
 <div class="card-deck">
     @foreach (var employee in Employees)
     {
@@ -16,10 +20,12 @@
                 <a href="#" class="btn btn-primary m-1">View</a>
 
                 <a href="#" class="btn btn-primary m-1">Edit</a>
-                
+
                 <a href="#" class="btn btn-danger m-1">Delete</a>
             </div>
 
         </div>
     }
 </div>
+}
+            
