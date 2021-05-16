@@ -28,6 +28,7 @@ namespace EmployeeManagement.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            //services.AddAutoMapper();
             services.AddHttpClient<IEmployeeService, EmployeeService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:44316/");

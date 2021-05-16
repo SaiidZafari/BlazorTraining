@@ -1,0 +1,64 @@
+﻿@page "/databindingdemo"
+
+@inherits DatabindingDemoBase
+
+<h3>Data Binding Demo</h3>
+<hr />
+<h2>Tow Way Binding</h2>
+
+<b>Description</b>
+
+<div>
+    <textarea @bind="Description" @bind:event="oninput" style="width:500px" />
+</div>
+<div>
+    Count : @Description.Length
+</div>
+
+<hr />
+<h3>One Way Data Binding</h3>
+
+<div>
+    <b>1- Name : </b> @Name
+</div>
+
+<div>
+    <b>2- Name with salutation:</b> @(Gender == "Male" ? $"Mr. {Name}" : $"Miss. {Name}")
+</div>
+<div>
+    <b>3- Name :</b> <input value="@Name" />
+</div>
+
+<hr />
+
+<h2>This is Tow Way Binding</h2>
+<hr />
+<div>
+    <b>4- Name :</b> <input value="@Name" @onchange="@(e => { Name = e.Value.ToString(); })" />
+</div>
+<hr />
+
+<div>
+    <b>5- Name :</b> <input @bind="@Name" />
+</div>
+<hr />
+
+<h2>Change On Click or live Change</h2>
+<hr />
+<div>
+    <b>6- Name :</b> <input @bind="@Name" @bind:event="oninput" />
+</div>
+<hr />
+<h2>Color Binding</h2>
+<hr />
+<div>
+    <b>Color : </b> <input @bind="@Color" />
+</div>
+<div @bind-style="Color" @bind-style:event="onchange" class="text-center">
+    <h3> The background color of this tex changes</h3>
+</div>
+<hr />
+
+
+<hr />
+
