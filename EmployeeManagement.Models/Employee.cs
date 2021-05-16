@@ -21,5 +21,7 @@ namespace EmployeeManagement.Models
         public int DepartmentId { get; set; }
         public string PhotoPath { get; set; }
 
+        //Navigation Properties: When properties get data from another database table
+        public Department Department { get; set; }
     }
 }
